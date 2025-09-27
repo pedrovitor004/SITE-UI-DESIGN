@@ -1,0 +1,274 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* FUNDO COM ONDA */
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: #000;
+  color: #fff;
+  position: relative;
+  min-height: 100vh;
+
+  /* onda no fundo */
+  background-image: url("assets/fundo-de-tecnologia-futurista-3d-com-ondas-de-dados-fluindo\ 1.png");
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-size: 100% auto; /* cobre horizontalmente sem cortar */
+}
+
+/* FUNDO */
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+.blur {
+  position: absolute;
+  width: 1200px;
+  opacity: 0.8;
+  filter: blur(80px);
+}
+.blur-top {
+  top: -200px;
+  right: -200px;
+}
+.blur-bottom {
+  bottom: -300px;
+  left: -200px;
+}
+
+/* HEADER */
+.header {
+  width: 90%;
+  max-width: 1100px;
+  margin: 30px auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo-icon {
+  width: 40px;
+}
+.logo-text {
+  font-weight: 700;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, #FF3B3B, #B51219);
+  transition: width 0.3s ease;
+}
+
+.nav a:hover {
+  color: #FF3B3B;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+/* BOTÃO DA NAV (gradiente angular preenchido) */
+.btn-nav {
+  border-radius: 50px;
+  padding: 6px 14px;
+  border: none;
+  background: conic-gradient(from 180deg at 50% 50%, #FF3B3B, #B51219, #45050A, #0A0A0C, #FF3B3B);
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.btn-nav:hover {
+  transform: scale(1.05);
+}
+
+/* HERO */
+.hero {
+  width: 90%;
+  max-width: 1100px;
+  margin: 120px auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+.hero-text {
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.hero-text h1 {
+  font-size: 64px;
+  font-weight: 800;
+}
+.hero-text p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+.hero-img img {
+  width: 500px;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+  mix-blend-mode: lighten; /* ou overlay, screen, multiply */
+}
+
+/* BOTÃO HERO (borda em gradiente angular corrigida) */
+.btn-main {
+  border-radius: 50px;
+  padding: 12px 28px;
+  font-size: 18px;
+  background: #000; /* fundo preto */
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  width: fit-content;
+  transition: transform 0.3s;
+  overflow: hidden;
+}
+
+/* cria a borda com gradiente sem falha */
+.btn-main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 3px; /* largura da borda */
+  border-radius: 50px;
+  background: conic-gradient(
+    from 180deg,
+    #FF3B3B 0deg,
+    #B51219 120deg,
+    #45050A 240deg,
+    #0A0A0C 300deg,
+    #FF3B3B 360deg
+  );
+
+  /* máscara: deixa só a borda visível */
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: 
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+
+  z-index: -1;
+}
+
+/* hover */
+.btn-main:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(255, 59, 59, 0.4);
+}
+
+/* HERO IMAGE */
+.hero-img img {
+  width: 500px;
+  object-fit: contain;
+  position: relative; /* para sobrepor o blur */
+  z-index: 1;
+}
+
+/* CARDS */
+.cards {
+  width: 90%;
+  max-width: 1100px;
+  margin: 80px auto;
+  display: flex;
+  gap: 25px;
+}
+
+.card {
+  position: relative;
+  flex: 1;
+  border-radius: 20px;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+  background: #000;
+  z-index: 1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 0 25px rgba(255, 59, 59, 0.4);
+}
+
+/* borda com gradiente usando máscara (border-like) */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 3px; /* largura da "borda" */
+  background: linear-gradient(135deg, #45050A, #FF3B3B, #B51219);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;        
+  mask: 
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;            
+  pointer-events: none;
+  z-index: -1;
+}
+
+.card img {
+  width: 80px;
+}
+.card h2 {
+  font-size: 22px;
+  font-weight: 700;
+}
+.card p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 40px 0;
+  font-size: 14px;
+  color: #ccc;
+}
+.footer strong {
+  color: #fff;
+}
